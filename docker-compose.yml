@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  ruby:
+    image: jksy/ruby-with-neologd:2.6.5
+    build:
+      context: ./
+      dockerfile: ./docker/ruby-with-neologd/Dockerfile
+
