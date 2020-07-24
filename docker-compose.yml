@@ -1,9 +1,17 @@
 version: '3.4'
 
-services:
-  ruby:
-    image: jksy/ruby-with-neologd:2.6.5
-    build:
-      context: ./
-      dockerfile: ./docker/ruby-with-neologd/Dockerfile
+x-build:
+  &build
+  context: ./
+  dockerfile: ./docker/ruby-with-neologd/Dockerfile
 
+services:
+  latest:
+    image: jksy/ruby-with-neologd:2.6.5-latest
+    build:
+      *build
+
+  build-date:
+    image: jksy/ruby-with-neologd:2.6.5-${BUILD_DATE}
+    build:
+      *build
